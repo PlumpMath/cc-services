@@ -52,12 +52,29 @@
     {:title (str/trim (get-in (first content) [:content 0]))
      :lines (map poem-line-xml->map (rest content))}))
 
-(defn p [x] (println x) x)
-
 (defn stereotrope-poetry-generator
   [quality stereotype target]
   {:pre [(every? string? [quality stereotype target])]}
   (let [src    (codec/percent-encode (str quality ":" stereotype))
-        target (codec/percent-encode target)
         url    (str metaphor-magnet-url "p?xml=true&source=" src "&target=" target)]
     (poem-xml->map (xml/parse url))))
+
+(def therex-url "http://ngrams.ucd.ie/therex2/common-nouns/share.action?xml=true&")
+
+(defn therex-member-xml->map
+  [xml]
+  {:item   (get-in xml [:content 0])
+   :weight (get-in xml [:attrs :weight])})
+
+(defn therex-members-xml->map
+  [xml]
+  (let [word1 (get-in xml [:attrs :word1])
+        word2 (get-in xml [:attrs :word2])]
+    (map therex-member-xml->map (:content xml)))
+
+(defn theasaurus-rex
+  [word1 word2]
+  {:pre [(every? string? [word1 word2])]}
+  (let [url (str therex-url "word1=" word1 "&word2=" word2)]
+    (xml/parse url)
+    ))
