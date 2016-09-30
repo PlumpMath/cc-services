@@ -55,7 +55,7 @@
         word2 (get-in xml [:attrs :word2])]
     {:word1 (get-in xml [:content 0 :attrs :word1])
      :word2 (get-in xml [:content 0 :attrs :word2])
-     :shared-categories (map member-xml->map (get-in xml [:content 0 :content]))
+     :shared-categories (map member-data-xml->map (get-in xml [:content 0 :content]))
      :for1-from2 (map category-xml->map (get-in xml [:content 1 :content]))
      :for2-from1 (map category-xml->map (get-in xml [:content 2 :content]))}))
 
