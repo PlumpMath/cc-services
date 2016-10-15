@@ -14,7 +14,7 @@ For an overview of these systems see this [presentation](http://videolectures.ne
 
 ## Usage
 
-Add `[org.clojars.triss/cc-services "0.1.0-SNAPSHOT"]` to your lein dependencies.
+Add `[org.clojars.triss/cc-services "0.1.1-SNAPSHOT"]` to your lein dependencies.
 For now you should refer to the source for documentation.
 
 ## License
