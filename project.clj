@@ -1,4 +1,4 @@
-(defproject org.clojars.triss/cc-services "0.1.0-SNAPSHOT"
+(defproject org.clojars.triss/cc-services "0.1.1-SNAPSHOT"
   :description "Idiomatic Clojure wrappers for Computational Creativity Web Services"
   :url "https://github.com/triss/cc-services"
   :license {:name "Eclipse Public License"
